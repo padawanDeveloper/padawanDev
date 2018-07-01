@@ -1,1 +1,1 @@
-import './index.html'
+console.log('client js')
