@@ -7,15 +7,17 @@ import AppliedRoute from './AppliedRoute'
 import NotFound from '../../pages/NotFound'
 import DashboardPage from '../../pages/DashboardPage'
 import LandingPage from '../../pages/LandingPage'
+import SigninPage from '../../pages/SiginPage'
 
-const Routes = ({childProps}) => (
+const Routes = () => (
     <Switch>
-      {childProps.isAuthenticated ? (
-        <AuthenticatedRoute exact path="/" component={DashboardPage} props={childProps}/>
+      { Meteor.userId() ? (
+        <AuthenticatedRoute exact path="/" component={DashboardPage} />
       ) : (
-        <UnauthenticatedRoute exact path="/" component={LandingPage} props={childProps}/>
+        <UnauthenticatedRoute exact path="/" component={LandingPage} />
       )}
       {/*<AppliedRoute path="/" exact component={LandingPage} props={childProps} />*/}
+      <UnauthenticatedRoute exact path="/signin" component={SigninPage} />
       <Route component={NotFound} />
     </Switch>
 )
