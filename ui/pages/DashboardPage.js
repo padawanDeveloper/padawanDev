@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
-const DashboarPage = () => (
-  <div>
-    <h1>DashboarPage!!</h1>
-  </div>
-)
+class DashboardPage extends Component {
+  logout = () => {
+    const { history } = this.props;
+    Meteor.logout(error => {
+      console.log('deslogueado')
+      history.push('/')
+    });
+  };
 
-export default DashboarPage
+  render() {
+    return (
+      <div>
+        <h1>DashboardPage</h1>
+        <h1 onClick={this.logout}>Logout</h1>
+      </div>
+    );
+  }
+}
+
+export default withRouter( props => <DashboardPage history={props.history} />)
