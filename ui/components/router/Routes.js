@@ -18,15 +18,10 @@ const Routes = () => (
       ) : (
         <UnauthenticatedRoute exact path="/" component={LandingPage} />
       )}
-      {/*<AppliedRoute path="/" exact component={LandingPage} props={childProps} />*/}
       <UnauthenticatedRoute exact path="/signin" component={SigninPage} />
       <UnauthenticatedRoute exact path="/signup" component={SignupPage} />
       <Route component={NotFound} />
     </Switch>
 )
-
-Routes.propTypes = {
-  childProps: PropTypes.object.isRequired,
-}
 
 export default Routes

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import PostForm from '../components/blog/PostForm'
 
 class DashboardPage extends Component {
   logout = () => {
@@ -10,11 +11,16 @@ class DashboardPage extends Component {
     });
   };
 
+  callMetodo = () => {
+    Meteor.call('logMethods')
+  }
+
   render() {
     return (
-      <div>
+      <div> 
         <h1>DashboardPage</h1>
         <h1 onClick={this.logout}>Logout</h1>
+        <PostForm/>
       </div>
     );
   }
