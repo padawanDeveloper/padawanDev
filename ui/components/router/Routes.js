@@ -8,6 +8,8 @@ import NotFound from '../../pages/NotFound'
 import DashboardPage from '../../pages/DashboardPage'
 import LandingPage from '../../pages/LandingPage'
 import SigninPage from '../../pages/SiginPage'
+import SignupPage from '../../pages/SignupPage'
+
 
 const Routes = () => (
     <Switch>
@@ -18,6 +20,7 @@ const Routes = () => (
       )}
       {/*<AppliedRoute path="/" exact component={LandingPage} props={childProps} />*/}
       <UnauthenticatedRoute exact path="/signin" component={SigninPage} />
+      <UnauthenticatedRoute exact path="/signup" component={SignupPage} />
       <Route component={NotFound} />
     </Switch>
 )
