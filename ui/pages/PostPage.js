@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { withTracker } from 'meteor/react-meteor-data';
 
 import Posts from "../../api/posts/Posts";
@@ -9,10 +9,13 @@ class PostPage extends Component{
     console.log(this.props)
   }
   render() {
-    const { loading } = this.props
+    console.log(this.props)
+    const { loading, post } = this.props
+    if(loading) return <h1>Loading</h1>
+    if(typeof post == undefined) <Redirect to="/" />
     return(
       <div>{
-        loading ? <h1>CARGANDO SUBSCRIPTION</h1> : <h1 onClick={this.handleClick}>Id</h1>
+        <h1 onClick={this.handleClick}>{post._id}</h1>
       }</div>
     )
   }
@@ -20,6 +23,7 @@ class PostPage extends Component{
 
 export default withRouter(withTracker((props) => {
   const _id = props.match.params.id
+  console.log(_id)
   const subscription = Meteor.subscribe("userPosts");
   const { ready } = subscription;
   if(ready) {

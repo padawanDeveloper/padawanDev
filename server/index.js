@@ -8,6 +8,9 @@ Meteor.startup(() => {
     insertPost(params){
       const {content, apellido } = params
       Posts.insert({content, apellido, owner: Meteor.userId()})
+    },
+    deletePost(id){
+      Posts.remove({_id: id})
     }
   })
 

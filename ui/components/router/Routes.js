@@ -10,6 +10,7 @@ import LandingPage from '../../pages/LandingPage'
 import SigninPage from '../../pages/SiginPage'
 import SignupPage from '../../pages/SignupPage'
 import PostPage from '../../pages/PostPage'
+import PostsPage from '../../pages/PostsPage'
 
 
 const Routes = () => (
@@ -22,6 +23,7 @@ const Routes = () => (
       <UnauthenticatedRoute exact path="/signin" component={SigninPage} />
       <UnauthenticatedRoute exact path="/signup" component={SignupPage} />
       <AuthenticatedRoute exact path="/post/:id" component={PostPage} />
+      <AuthenticatedRoute exact path="/posts" component={PostsPage} />
       <Route component={NotFound} />
     </Switch>
 )
