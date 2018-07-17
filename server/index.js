@@ -10,4 +10,8 @@ Meteor.startup(() => {
       Posts.insert({content, apellido, owner: Meteor.userId()})
     }
   })
+
+  Meteor.publish('userPosts', function userPostsPublication(){
+    return Posts.find({owner: Meteor.userId()})
+  })
 });
